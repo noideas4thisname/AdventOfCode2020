@@ -35,6 +35,14 @@ fn is_valid_password (pass: &Password) -> bool {
     return false;
 }
 
+fn is_valid_password_v2 (pass: &Password) -> bool {
+    
+    let lower = pass.pass.chars().nth((pass.min - 1) as usize).unwrap();
+    let upper = pass.pass.chars().nth((pass.max - 1) as usize).unwrap();
+    
+    return (lower == pass.letter) ^ (upper == pass.letter);
+}
+
 #[aoc_generator(day2)]
 fn parse_input_day2(input: &str) -> Vec<Password> {
 
@@ -54,6 +62,18 @@ fn part1(input: &[Password]) -> u32 {
 
     for x in input {
         if is_valid_password(x) {
+            count += 1;
+        }
+    }
+    return count;
+}
+
+#[aoc(day2, part2)]
+fn part2(input: &[Password]) -> u32 {
+    let mut count = 0;
+
+    for x in input {
+        if is_valid_password_v2(x) {
             count += 1;
         }
     }
