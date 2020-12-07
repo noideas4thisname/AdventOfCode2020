@@ -6,9 +6,10 @@ fn parse_input_day3(input: &str) -> Vec<&str> {
     return input_lines;
 }
 
-
 #[aoc(day3, part1)]
 fn part1(input: Vec<&str>) -> u32 {
+
     println!("{}", input[0]);
+
     return 0;
 }
