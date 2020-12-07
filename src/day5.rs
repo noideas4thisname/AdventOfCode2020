@@ -1,6 +1,7 @@
 use aoc_runner_derive::{aoc, aoc_generator};
 use std::collections::HashSet;
 
+#[allow(dead_code)]
 struct Seat {
     row: usize,
     col: usize,
@@ -66,16 +67,16 @@ fn part1(input: &[Seat]) -> u32 {
 #[aoc(day5, part2)]
 fn part2(input: &[Seat]) -> u32 {
     let mut checker: HashSet<u32> = HashSet::new();
-    let mut minId = std::u32::MAX;
-    let mut maxId = 0;
+    let mut min_id = std::u32::MAX;
+    let mut max_id = 0;
 
     for x in input {
-        if x.id > maxId { maxId = x.id;}
-        if x.id < minId { minId = x.id;}
+        if x.id > max_id { max_id = x.id;}
+        if x.id < min_id { min_id = x.id;}
         checker.insert(x.id);
     }
 
-    for y in (minId)..(maxId) {
+    for y in (min_id)..(max_id) {
         if !checker.contains(&y) {
             return y;
         }
